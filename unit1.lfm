@@ -75,6 +75,7 @@ object Form1: TForm1
     end
   end
   object IdHTTP1: TIdHTTP
+    IOHandler = IdSSLIOHandlerSocketOpenSSL1
     OnWork = IdHTTP1Work
     OnWorkBegin = IdHTTP1WorkBegin
     ProxyParams.BasicAuthentication = False
@@ -94,5 +95,15 @@ object Form1: TForm1
     HTTPOptions = [hoForceEncodeParams]
     left = 141
     top = 112
+  end
+  object IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL
+    MaxLineAction = maException
+    Port = 0
+    DefaultPort = 0
+    SSLOptions.Mode = sslmUnassigned
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    left = 240
+    top = 80
   end
 end

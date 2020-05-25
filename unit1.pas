@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, StdCtrls,
-  ExtCtrls, ComCtrls, Buttons, IdHTTP, IdComponent, LCLIntf;
+  ExtCtrls, ComCtrls, Buttons, IdHTTP, IdSSLOpenSSL, IdComponent, LCLIntf;
 
 type
 
@@ -16,6 +16,7 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     IdHTTP1: TIdHTTP;
+    IdSSLIOHandlerSocketOpenSSL1: TIdSSLIOHandlerSocketOpenSSL;
     MainMenu1: TMainMenu;
     Memo1: TMemo;
     MenuItem1: TMenuItem;
@@ -51,9 +52,9 @@ implementation
 procedure TForm1.MenuItem1Click(Sender: TObject);
 begin
   if MenuItem2.Caption = 'Русский' then
-    OpenURL('http://voloshinov.ru/simplex/eindex.htm')
+    OpenURL('https://voloshinov.ru/en/simplex/')
   else
-    OpenURL('http://voloshinov.ru/simplex/index.htm');
+    OpenURL('https://voloshinov.ru/simplex/');
 end;
 
 procedure TForm1.BitBtn1Click(Sender: TObject);
@@ -63,7 +64,7 @@ begin
   try
     try
       Stream := TMemoryStream.Create;
-      IdHTTP1.Get('http://voloshinov.ru/simplex/spw.exe', Stream);
+      IdHTTP1.Get('https://voloshinov.ru/simplex/spw.exe', Stream);
       a := IdHTTP1.Response.ContentLength;
       RenameFile('spw.exe', 'spw.old');
       Stream.SaveToFile('spw.exe');
