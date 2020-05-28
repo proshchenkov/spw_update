@@ -64,7 +64,7 @@ begin
   try
     try
       Stream := TMemoryStream.Create;
-      IdHTTP1.Get('https://voloshinov.ru/simplex/spw.exe', Stream);
+      IdHTTP1.Get('https://voloshinov.ru/spw.exe', Stream);
       a := IdHTTP1.Response.ContentLength;
       RenameFile('spw.exe', 'spw.old');
       Stream.SaveToFile('spw.exe');
